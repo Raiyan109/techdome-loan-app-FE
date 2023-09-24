@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 const LoanForm = () => {
@@ -6,7 +7,17 @@ const LoanForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(amountInput, loanTermInput);
+        axios.post('http://localhost:5000/api/loan/add', {
+            amount: amountInput,
+            term: loanTermInput,
+
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     return (
 

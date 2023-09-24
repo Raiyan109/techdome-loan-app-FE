@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 
 import SignUp from "../pages/SignUp";
 import ForgotPassword from "../pages/ForgotPassword";
+import MyLoans from "../pages/MyLoans";
 
 const routes = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ const routes = createBrowserRouter([
     {
         path: '/signUp',
         element: <SignUp />
+    },
+    {
+        path: '/myLoans',
+        element: <MyLoans />
     },
     {
         path: '/forgot-password',

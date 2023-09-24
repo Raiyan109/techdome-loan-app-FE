@@ -1,15 +1,28 @@
 import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
+import axios from 'axios';
+import BackToHome from '../components/BackToHome';
 
 const SignUp = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(name, email, password);
+        const res = await axios.post('http://localhost:5000/api/user/signup', {
+            name,
+            email,
+            password,
+            loans: [],
+        })
+
+
+        const data = res.data
+        console.log(data.user._id);
+        localStorage.setItem('userId', data.user._id)
+        return data
     }
 
     return (
@@ -44,7 +57,7 @@ const SignUp = () => {
 
                 </form>
 
-
+                <BackToHome />
             </div>
         </>
     );
