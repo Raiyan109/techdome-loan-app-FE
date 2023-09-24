@@ -2,15 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import MyLoan from "./MyLoan";
 import BackToHome from "../components/BackToHome";
+import Loading from "../components/Loading";
 
 const MyLoans = () => {
     const [loans, setLoans] = useState()
+    const [loading, setLoading] = useState(false)
     const id = localStorage.getItem("userId")
 
     const getLoanByUserId = async () => {
+        setLoading(true)
         const res = await axios.get(`http://localhost:5000/api/loan/user/${id}`)
             .catch((err) => console.log(err))
 
+        setLoading(false)
         const data = await res.data
         return data
     }
@@ -19,9 +23,13 @@ const MyLoans = () => {
         getLoanByUserId()
             .then((data) => setLoans(data.loans.loans))
     }, [])
+
+    if (loading) {
+        return <Loading />
+    }
     console.log(loans);
     return (
-        <div>
+        <div className="container">
             <BackToHome />
             <div className="container p-2 mx-auto sm:p-4 text-gray-800">
                 <h2 className="mb-4 text-2xl font-semibold leadi">{ } Loans </h2>
@@ -31,6 +39,7 @@ const MyLoans = () => {
                             key={loan._id}
                             amount={loan.amount}
                             term={loan.term}
+                            createdAt={loan.createdAt}
                             index={index}
                         />
                     ))}

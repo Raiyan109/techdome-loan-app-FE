@@ -1,19 +1,22 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoanForm = () => {
     const [amountInput, setAmountInput] = useState('')
     const [loanTermInput, setLoanTermInput] = useState('')
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:5000/api/loan/add', {
             amount: amountInput,
             term: loanTermInput,
-
+            user: localStorage.getItem("userId")
         })
             .then(function (response) {
                 console.log(response);
+                navigate('/myLoans')
             })
             .catch(function (error) {
                 console.log(error);
