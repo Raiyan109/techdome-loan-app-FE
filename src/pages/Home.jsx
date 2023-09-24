@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Home = () => {
     const getLoans = async () => {
-        const res = await axios.get('http://localhost:5000/api/loan')
+        const res = await axios.get('https://techdome-be.vercel.app/api/loan')
             .catch((err) => console.log(err))
 
         const data = await res.data

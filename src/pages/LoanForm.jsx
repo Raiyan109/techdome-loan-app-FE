@@ -9,7 +9,7 @@ const LoanForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/api/loan/add', {
+        axios.post('https://techdome-be.vercel.app/api/loan/add', {
             amount: amountInput,
             term: loanTermInput,
             user: localStorage.getItem("userId")

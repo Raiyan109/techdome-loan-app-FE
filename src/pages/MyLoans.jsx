@@ -11,7 +11,7 @@ const MyLoans = () => {
 
     const getLoanByUserId = async () => {
         setLoading(true)
-        const res = await axios.get(`http://localhost:5000/api/loan/user/${id}`)
+        const res = await axios.get(`https://techdome-be.vercel.app/api/loan/user/${id}`)
             .catch((err) => console.log(err))
 
         setLoading(false)

@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.post('http://localhost:5000/api/user/signup', {
+        const res = await axios.post('https://techdome-be.vercel.app/api/user/signup', {
             name,
             email,
             password,
