@@ -19,7 +19,7 @@ const SignUp = () => {
         })
 
 
-        const data = res.data
+        const data = await res.data
         console.log(data.user._id);
         localStorage.setItem('userId', data.user._id)
         return data

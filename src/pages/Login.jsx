@@ -15,7 +15,7 @@ const Login = () => {
             password,
         })
 
-        const data = res.data
+        const data = await res.data
         localStorage.setItem('userId', data.existingUser._id)
         return data
     }
