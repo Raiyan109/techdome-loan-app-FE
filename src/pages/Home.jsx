@@ -1,9 +1,11 @@
 import Navbar from '../components/Navbar';
+import LoanForm from './LoanForm';
 
 const Home = () => {
     return (
-        <div>
+        <div className='bg-lime-300'>
             <Navbar />
+            <LoanForm />
         </div>
     );
 };
